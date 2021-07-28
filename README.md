@@ -4,11 +4,12 @@ This project is only available for android
 
 ## Installation
 
+```
 $ git clone https://github.com/antonio9520/todo-app
 $ cd ../todo
 $ npm install
 $ npx react-native run-android
-
+```
 ## Technologies
 
 - [@react-native-async-storage/async-storage]: Version 1.15.5
