@@ -9,6 +9,7 @@ export default {
     yellow: '#F6D55E',
     lightBlue: '#7EBAED',
     success: '#26C06E',
+    black: '#424141',
   },
   SIZES: {
     SPACING_1: 10,

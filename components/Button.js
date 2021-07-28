@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import theme from '../theme';
+import PropTypes from 'prop-types';
 
 const CustomButton = styled.TouchableHighlight`
   border-radius: 15px;
@@ -19,7 +20,7 @@ const TextButton = styled.Text`
   color: ${theme.COLORS.white};
 `;
 
-export default props => {
+const Button = props => {
   return (
     <CustomButton
       {...props}
@@ -28,3 +29,10 @@ export default props => {
     </CustomButton>
   );
 };
+
+Button.propTypes = {
+  color: PropTypes.string,
+  onPress: PropTypes.func,
+};
+
+export default Button;

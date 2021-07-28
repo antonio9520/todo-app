@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {TouchableHighlight, View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IconMI from 'react-native-vector-icons/MaterialIcons';
 import {
   createStackNavigator,
   CardStyleInterpolators,
@@ -28,16 +30,30 @@ const MainNavigator = () => {
               borderBottomColor: theme.COLORS.lightGray,
               borderBottomWidth: 1,
             },
+            headerRight: () => (
+              <View style={styles.conteinerBtns}>
+                <TouchableHighlight>
+                  <Icon name="search" size={18} color={theme.COLORS.black} />
+                </TouchableHighlight>
+                <TouchableHighlight>
+                  <IconMI
+                    name="notifications-none"
+                    size={22}
+                    color={theme.COLORS.black}
+                  />
+                </TouchableHighlight>
+                <TouchableHighlight>
+                  <IconMI name="menu" size={22} color={theme.COLORS.black} />
+                </TouchableHighlight>
+              </View>
+            ),
           }}
         />
         <Stack.Screen
           name="addTask"
           component={CreateTask}
-          options={({navigation, route}) => ({
+          options={() => ({
             title: 'Add Task',
-            // headerLeft: props => (
-            //   <Button title="" {...props} onPress={() => navigation.goBack()} />
-            // ),
             headerStyle: {
               borderBottomColor: theme.COLORS.lightGray,
               borderBottomWidth: 1,
@@ -50,3 +66,13 @@ const MainNavigator = () => {
 };
 
 export default MainNavigator;
+
+const styles = StyleSheet.create({
+  conteinerBtns: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 90,
+    marginRight: 15,
+    justifyContent: 'space-between',
+  },
+});

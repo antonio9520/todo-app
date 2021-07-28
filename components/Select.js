@@ -3,13 +3,14 @@ import {View, StyleSheet} from 'react-native';
 import theme from '../theme';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 
 const Select = props => {
   return (
     <RNPickerSelect
       {...props}
       useNativeAndroidPickerStyle={false}
-      style={styles}
+      style={props.error ? stylesError : styles}
       Icon={() => {
         return (
           <View style={styles.contIcon}>
@@ -25,6 +26,14 @@ const Select = props => {
   );
 };
 
+Select.propTypes = {
+  error: PropTypes.bool,
+  placeholder: PropTypes.object,
+  onValueChange: PropTypes.func,
+  items: PropTypes.array.isRequired,
+  selectedValue: PropTypes.string,
+};
+
 export default Select;
 
 const styles = StyleSheet.create({
@@ -34,9 +43,8 @@ const styles = StyleSheet.create({
     height: 45,
     paddingLeft: 15,
     marginVertical: 7,
-    color: theme.COLORS.secondary,
+    color: theme.COLORS.black,
   },
-  // placeholder: {color: theme.COLORS.secondary},
   contIcon: {
     height: 50,
     width: 50,
@@ -45,14 +53,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 5,
   },
-  iconView: {
-    borderStyle: 'solid',
-    borderTopColor: theme.COLORS.gray,
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderLeftWidth: 8,
-    borderRightWidth: 8,
-    borderTopWidth: 8,
+});
+const stylesError = StyleSheet.create({
+  inputAndroid: {
+    backgroundColor: theme.COLORS.lightGray2,
     borderRadius: 10,
+    height: 45,
+    paddingLeft: 15,
+    marginVertical: 7,
+    color: theme.COLORS.black,
+    borderWidth: 1,
+    borderColor: theme.COLORS.red,
   },
 });
